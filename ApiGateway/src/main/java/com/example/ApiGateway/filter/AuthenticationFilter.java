@@ -31,7 +31,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                     throw new RuntimeException("missing authentication header.");
                 }
 
-                String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
+                String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).stream().findAny().get();
                 if(authHeader!=null && authHeader.startsWith("Bearer ")){
                     authHeader = authHeader.substring(7);
                 }

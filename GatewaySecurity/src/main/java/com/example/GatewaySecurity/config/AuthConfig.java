@@ -30,6 +30,8 @@ public class AuthConfig {
         return http.csrf().disable()
                 .authorizeHttpRequests()
                 .antMatchers("/auth/register", "/auth/token", "/auth/validate").permitAll()
+                .anyRequest()
+                .authenticated()
                 .and()
                 .build();
     }

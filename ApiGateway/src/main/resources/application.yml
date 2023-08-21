@@ -22,6 +22,11 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: GATEWAYSECURITY-SERVICE
+          uri: lb://GATEWAYSECURITY-SERVICE
+          predicates:
+            - Path=/auth/**
+
 eureka:
   instance:
     prefer-ip-address: true
